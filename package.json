@@ -1,6 +1,6 @@
 {
   "name": "inloc-api",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "api to access inloc data",
   "main": "index.js",
   "scripts": {

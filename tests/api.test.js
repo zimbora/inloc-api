@@ -17,7 +17,7 @@ describe('check API state', () => {
 
   it('should return the correct result', async () => {
 
-    const res = await api.state();
+    const res = await api.state()
     expect(res).toHaveProperty("status");
     expect(res?.status).toBe("ok");
   });
@@ -27,7 +27,9 @@ describe('test Map API', () => {
 
   it('getInfo', async () => {
 
+    console.log("floor_id:",floor_id)
     const res = await api.map.getInfo(floor_id);
+    console.log(res)
     expect(res).toHaveProperty("address");
     expect(res).toHaveProperty("level");
     expect(res).toHaveProperty("name");
