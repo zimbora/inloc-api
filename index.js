@@ -29,7 +29,12 @@ module.exports = {
           macAddress : mac_address
         }
         return axios_get('/map/'+map_id+'/data/node/info',params)
-        .then( (response) => {return Promise.resolve(response[0])})
+        .then( (response) => {
+          if(response?.length > 0)
+            return Promise.resolve(response[0])
+          else
+            return Promise.resolve(response)
+        })
         .catch( (error) => {return Promise.reject(error)})
 
       },
@@ -40,7 +45,12 @@ module.exports = {
           ip : ip
         }
         return axios_get('/map/'+map_id+'/data/mac',params)
-        .then( (response) => {return Promise.resolve(response[0])})
+        .then( (response) => {
+          if(response?.length > 0)
+            return Promise.resolve(response[0])
+          else
+            return Promise.resolve(response)
+        })
         .catch( (error) => {return Promise.reject(error)})
 
       },
@@ -80,7 +90,12 @@ module.exports = {
       getSettings: (map_id)=>{
 
         return axios_get('/map/'+map_id+'/sniffers/settings')
-        .then( (response) => {return Promise.resolve(response[0])})
+        .then( (response) => {
+          if(response?.length > 0)
+            return Promise.resolve(response[0])
+          else
+            return Promise.resolve(response)
+        })
         .catch( (error) => {return Promise.reject(error)})
       },
 
@@ -214,7 +229,12 @@ module.exports = {
     getInfo : (map_id)=>{
 
       return axios_get('/map/'+map_id+'/info')
-      .then( (response) => {return Promise.resolve(response[0])})
+      .then( (response) => {
+        if(response?.length > 0)
+          return Promise.resolve(response[0])
+        else
+          return Promise.resolve(response)
+      })
       .catch( (error) => {return Promise.reject(error)})
 
     },
@@ -237,7 +257,12 @@ module.exports = {
     getSVG : (map_id)=>{
 
       return axios_get('/map/'+map_id+'/svg_info')
-      .then( (response) => {return Promise.resolve(response[0])})
+      .then( (response) => {
+        if(response?.length > 0)
+          return Promise.resolve(response[0])
+        else
+          return Promise.resolve(response)
+      })
       .catch( (error) => {return Promise.reject(error)})
     },
 
@@ -259,7 +284,12 @@ module.exports = {
     getWiFiCredentials : (map_id)=>{
 
       return axios_get('/map/'+map_id+'/wifi/credentials')
-      .then( (response) => {return Promise.resolve(response[0])})
+      .then( (response) => {
+        if(response?.length > 0)
+          return Promise.resolve(response[0])
+        else
+          return Promise.resolve(response)
+      })
       .catch( (error) => {return Promise.reject(error)})
     },
 
@@ -333,7 +363,12 @@ module.exports = {
       user_id:user_id
     }
     return axios_get('/user/profile',params)
-    .then( (response) => {return Promise.resolve(response[0])})
+    .then( (response) => {
+      if(response?.length > 0)
+        return Promise.resolve(response[0])
+      else
+        return Promise.resolve(response)
+    })
     .catch( (error) => {return Promise.reject(error)})
   },
 
@@ -368,7 +403,7 @@ function axios_get(path, params = {}, headers = {}){
     .then(function (response) {
       if(response.data.Error){
         console.log(response.data.Message);
-        return Promise.reject(response.data.Message);
+        return Promise.resolve(null);
       }else
         return Promise.resolve(response.data.Result)
     })

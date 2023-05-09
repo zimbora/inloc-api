@@ -1,5 +1,9 @@
 # Changelog
 
+# v1.0.3
+  - deal with empty arrays
+  - adds controllertoken and increases tests for controller
+
 # v1.0.2
   - returning reject on promises
 

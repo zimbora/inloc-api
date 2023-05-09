@@ -9,7 +9,7 @@ const floor_id = config.floor_id;
 api.init({
   domain: config.domain,
   auth:{
-    token: config.token
+    token: config.api_token
   }
 },config.debug_axios)
 
@@ -27,9 +27,7 @@ describe('test Map API', () => {
 
   it('getInfo', async () => {
 
-    console.log("floor_id:",floor_id)
     const res = await api.map.getInfo(floor_id);
-    console.log(res)
     expect(res).toHaveProperty("address");
     expect(res).toHaveProperty("level");
     expect(res).toHaveProperty("name");
